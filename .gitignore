@@ -1,0 +1,6 @@
+.project
+tmp
+bin
+build
+*.zip
+*xcuserdata*

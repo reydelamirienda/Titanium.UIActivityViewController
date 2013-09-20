@@ -1,0 +1,18 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 0.1
+apiversion: 2
+description: My module
+author: Your Name
+license: Specify your license
+copyright: Copyright (c) 2013 by Your Company
+
+
+# these should not be edited
+name: ActivityViewController
+moduleid: es.oyatsu.avc
+guid: 4a814f45-3433-44eb-86b2-d4291c2d8b39
+platform: iphone
+minsdk: 3.1.2.GA
