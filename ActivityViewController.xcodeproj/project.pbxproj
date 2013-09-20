@@ -30,8 +30,8 @@
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		D33F624A17EAF59700E8B7FB /* EsOyatsuAvcApplicationActivityProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = D33F624817EAF59700E8B7FB /* EsOyatsuAvcApplicationActivityProxy.h */; };
 		D33F624B17EAF59700E8B7FB /* EsOyatsuAvcApplicationActivityProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D33F624917EAF59700E8B7FB /* EsOyatsuAvcApplicationActivityProxy.m */; };
-		D33F624E17EAF6CE00E8B7FB /* ApplicationActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = D33F624C17EAF6CE00E8B7FB /* ApplicationActivity.h */; };
-		D33F624F17EAF6CE00E8B7FB /* ApplicationActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = D33F624D17EAF6CE00E8B7FB /* ApplicationActivity.m */; };
+		D33F625B17ECB9E400E8B7FB /* EsOyatsuAvcImportToCalendarActivityProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = D33F625917ECB9E400E8B7FB /* EsOyatsuAvcImportToCalendarActivityProxy.h */; };
+		D33F625C17ECB9E400E8B7FB /* EsOyatsuAvcImportToCalendarActivityProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D33F625A17ECB9E400E8B7FB /* EsOyatsuAvcImportToCalendarActivityProxy.m */; };
 		D398CC0817EA5102007AC6A7 /* EsOyatsuAvcActivityViewControllerProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = D398CC0617EA5102007AC6A7 /* EsOyatsuAvcActivityViewControllerProxy.h */; };
 		D398CC0917EA5102007AC6A7 /* EsOyatsuAvcActivityViewControllerProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D398CC0717EA5102007AC6A7 /* EsOyatsuAvcActivityViewControllerProxy.m */; };
 /* End PBXBuildFile section */
@@ -57,8 +57,9 @@
 		D2AAC07E0554694100DB518D /* libEsOyatsuAvc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEsOyatsuAvc.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33F624817EAF59700E8B7FB /* EsOyatsuAvcApplicationActivityProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EsOyatsuAvcApplicationActivityProxy.h; path = Classes/EsOyatsuAvcApplicationActivityProxy.h; sourceTree = "<group>"; };
 		D33F624917EAF59700E8B7FB /* EsOyatsuAvcApplicationActivityProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EsOyatsuAvcApplicationActivityProxy.m; path = Classes/EsOyatsuAvcApplicationActivityProxy.m; sourceTree = "<group>"; };
-		D33F624C17EAF6CE00E8B7FB /* ApplicationActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationActivity.h; path = Classes/ApplicationActivity.h; sourceTree = "<group>"; };
-		D33F624D17EAF6CE00E8B7FB /* ApplicationActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicationActivity.m; path = Classes/ApplicationActivity.m; sourceTree = "<group>"; };
+		D33F625817ECB8C900E8B7FB /* ActivityProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ActivityProxy.h; path = Classes/ActivityProxy.h; sourceTree = "<group>"; };
+		D33F625917ECB9E400E8B7FB /* EsOyatsuAvcImportToCalendarActivityProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EsOyatsuAvcImportToCalendarActivityProxy.h; path = Classes/EsOyatsuAvcImportToCalendarActivityProxy.h; sourceTree = "<group>"; };
+		D33F625A17ECB9E400E8B7FB /* EsOyatsuAvcImportToCalendarActivityProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EsOyatsuAvcImportToCalendarActivityProxy.m; path = Classes/EsOyatsuAvcImportToCalendarActivityProxy.m; sourceTree = "<group>"; };
 		D398CC0617EA5102007AC6A7 /* EsOyatsuAvcActivityViewControllerProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EsOyatsuAvcActivityViewControllerProxy.h; path = Classes/EsOyatsuAvcActivityViewControllerProxy.h; sourceTree = "<group>"; };
 		D398CC0717EA5102007AC6A7 /* EsOyatsuAvcActivityViewControllerProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EsOyatsuAvcActivityViewControllerProxy.m; path = Classes/EsOyatsuAvcActivityViewControllerProxy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,8 +114,9 @@
 				D398CC0717EA5102007AC6A7 /* EsOyatsuAvcActivityViewControllerProxy.m */,
 				D33F624817EAF59700E8B7FB /* EsOyatsuAvcApplicationActivityProxy.h */,
 				D33F624917EAF59700E8B7FB /* EsOyatsuAvcApplicationActivityProxy.m */,
-				D33F624C17EAF6CE00E8B7FB /* ApplicationActivity.h */,
-				D33F624D17EAF6CE00E8B7FB /* ApplicationActivity.m */,
+				D33F625817ECB8C900E8B7FB /* ActivityProxy.h */,
+				D33F625917ECB9E400E8B7FB /* EsOyatsuAvcImportToCalendarActivityProxy.h */,
+				D33F625A17ECB9E400E8B7FB /* EsOyatsuAvcImportToCalendarActivityProxy.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -137,9 +139,9 @@
 			files = (
 				AA747D9F0F9514B9006C5449 /* EsOyatsuAvc_Prefix.pch in Headers */,
 				24DD6CF91134B3F500162E58 /* EsOyatsuAvcModule.h in Headers */,
+				D33F625B17ECB9E400E8B7FB /* EsOyatsuAvcImportToCalendarActivityProxy.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* EsOyatsuAvcModuleAssets.h in Headers */,
 				D33F624A17EAF59700E8B7FB /* EsOyatsuAvcApplicationActivityProxy.h in Headers */,
-				D33F624E17EAF6CE00E8B7FB /* ApplicationActivity.h in Headers */,
 				D398CC0817EA5102007AC6A7 /* EsOyatsuAvcActivityViewControllerProxy.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,10 +216,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D398CC0917EA5102007AC6A7 /* EsOyatsuAvcActivityViewControllerProxy.m in Sources */,
-				D33F624F17EAF6CE00E8B7FB /* ApplicationActivity.m in Sources */,
 				24DD6CFA1134B3F500162E58 /* EsOyatsuAvcModule.m in Sources */,
 				D33F624B17EAF59700E8B7FB /* EsOyatsuAvcApplicationActivityProxy.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* EsOyatsuAvcModuleAssets.m in Sources */,
+				D33F625C17ECB9E400E8B7FB /* EsOyatsuAvcImportToCalendarActivityProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

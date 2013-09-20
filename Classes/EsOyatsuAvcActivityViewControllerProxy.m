@@ -7,8 +7,7 @@
 //
 
 #import "EsOyatsuAvcActivityViewControllerProxy.h"
-#import "EsOyatsuAvcApplicationActivityProxy.h"
-#import "ApplicationActivity.h"
+#import "ActivityProxy.h"
 
 #import "TiApp.h"
 #import "TiUtils.h"
@@ -22,7 +21,7 @@
     NSMutableArray* result = nil;
     if (_applicationActivities != nil) {
         result = [NSMutableArray array];
-        for (EsOyatsuAvcApplicationActivityProxy* aap in _applicationActivities) {
+        for (UIActivity<ActivityProxy>* aap in _applicationActivities) {
             UIActivity* act = [aap asActivity];
             [result addObject:act];
         }
