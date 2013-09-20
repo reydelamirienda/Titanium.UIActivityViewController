@@ -12,6 +12,9 @@
  */
 @interface EsOyatsuAvcModule : TiModule 
 
+@property(nonatomic,readonly) NSNumber *ACTIVITY_CATEGORY_SHARE;
+@property(nonatomic,readonly) NSNumber *ACTIVITY_CATEGORY_ACTION;
+
 @property(nonatomic,readonly) NSString *ACTIVITY_TYPE_FACEBOOK;
 @property(nonatomic,readonly) NSString *ACTIVITY_TYPE_TWITTER;
 @property(nonatomic,readonly) NSString *ACTIVITY_TYPE_WEIBO;

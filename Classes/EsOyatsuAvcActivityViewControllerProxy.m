@@ -12,6 +12,7 @@
 
 #import "TiApp.h"
 #import "TiUtils.h"
+#import "TiFile.h"
 
 @implementation EsOyatsuAvcActivityViewControllerProxy
 
@@ -21,8 +22,7 @@
     NSMutableArray* result = nil;
     if (_applicationActivities != nil) {
         result = [NSMutableArray array];
-        for (int i = 0; i < _applicationActivities.count; i++) {
-            EsOyatsuAvcApplicationActivityProxy* aap = [_applicationActivities objectAtIndex:i];
+        for (EsOyatsuAvcApplicationActivityProxy* aap in _applicationActivities) {
             UIActivity* act = [aap asActivity];
             [result addObject:act];
         }
@@ -30,28 +30,35 @@
     return result;
 }
 
--(void) open:(id)args
+-(void) performWithItems:(id)args
 {
-	ENSURE_UI_THREAD_0_ARGS
-
+ 	ENSURE_UI_THREAD_1_ARG(args)
+    NSArray *varargs = args;
+    
     NSMutableArray* activityItems = [NSMutableArray array];
-    
-    NSString* text = [self valueForKey:@"text"];
-    if (text != nil) {
-        [activityItems addObject:text];
-    }
-    
-    id image = [self valueForKey:@"image"];
-    if (image != nil) {
-        UIImage* uiimage = [TiUtils image:image proxy:self];
-        if (uiimage != nil) {
-            [activityItems addObject:uiimage];
+    for (id obj in varargs) {
+        UIImage* img = [TiUtils image:obj proxy:self];
+        if (img != nil) {
+            [activityItems addObject:img];
+        } else if ([obj isKindOfClass:[NSString class]]) {
+            NSURL *url = [NSURL URLWithString:obj];
+            if (url != nil && ([url.scheme isEqualToString:@"http"] || [url.scheme isEqualToString:@"https"])) {
+                [activityItems addObject:url];
+            } else {
+                [activityItems addObject:obj];
+            }
+        } else if ([obj isKindOfClass:[TiFile class]]) {
+            TiFile* file = obj;
+            NSURL *url = [NSURL fileURLWithPath:file.path];
+            [activityItems addObject:url];
+        } else {
+            [activityItems addObject:obj];
         }
     }
     
     NSArray *applicationActivities = [self buildActivities];
     
-	UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems: activityItems applicationActivities:applicationActivities];
+	UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:applicationActivities];
     
     if (_excluded != nil) {
         [controller setExcludedActivityTypes:_excluded];

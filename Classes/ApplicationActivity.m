@@ -7,7 +7,9 @@
 //
 
 #import "TiBase.h"
+#import "TiViewController.h"
 #import "ApplicationActivity.h"
+
 
 @implementation ApplicationActivity
 
@@ -23,11 +25,12 @@
 
 - (UIImage *) activityImage
 {
-    return self.proxy.image;
+    return [self.proxy imageOrDefault];
 }
 
 - (void) prepareWithActivityItems:(NSArray *) activityItems
 {
+    _activityItems = activityItems;
 }
 
 - (BOOL) canPerformWithActivityItems:(NSArray *)activityItems
@@ -35,15 +38,9 @@
     return YES;
 }
 
-- (UIViewController *)activityViewController {
-    // In the future we can allow apps to display a full sharing UI from here
-    return nil;
-}
-
 - (void) performActivity
 {
-    [self.proxy performActivity];
-    [self activityDidFinish:YES];
+    [self activityDidFinish:[self.proxy performActivity:self withItems:_activityItems]];
 }
 
 - (instancetype) initWithProxy:(EsOyatsuAvcApplicationActivityProxy *)proxy;
@@ -55,9 +52,32 @@
     return self;
 }
 
-+ (ApplicationActivity*) activityWithProxy:(EsOyatsuAvcApplicationActivityProxy *)proxy;
++ (ApplicationActivity*) activityWithProxy:(EsOyatsuAvcApplicationActivityProxy *)proxy ofCategory:(UIActivityCategory)category
 {
-    return [[ApplicationActivity alloc] initWithProxy:proxy];
+    if (category == UIActivityCategoryAction) {
+        return [[ApplicationActionActivity alloc] initWithProxy:proxy];
+    } else {
+        return [[ApplicationShareActivity alloc] initWithProxy:proxy];
+    }
 }
 
 @end
+
+@implementation ApplicationShareActivity
+
++(UIActivityCategory)activityCategory
+{
+    return UIActivityCategoryShare;
+}
+
+@end
+
+@implementation ApplicationActionActivity
+
++(UIActivityCategory)activityCategory
+{
+    return UIActivityCategoryAction;
+}
+
+@end
+

@@ -8,16 +8,20 @@
 
 #import "TiProxy.h"
 
-@interface EsOyatsuAvcApplicationActivityProxy : TiProxy
+@class ApplicationActivity;
 
+@interface EsOyatsuAvcApplicationActivityProxy : TiProxy {
+}
+
+@property(retain, nonatomic) NSNumber* category;
 @property(retain, nonatomic) NSString* type;
 @property(retain, nonatomic) NSString* title;
-@property(retain, nonatomic) UIImage*  image;
+@property(retain, nonatomic) id        image;
 
 @property(retain, nonatomic) KrollCallback* onPerformActivity;
-@property(retain, nonatomic) KrollCallback* onActivityViewController;
 
--(UIActivity*)asActivity;
--(void)performActivity;
+-(UIImage*)imageOrDefault;
+-(ApplicationActivity*)asActivity;
+-(BOOL)performActivity:(ApplicationActivity*)activity withItems:(NSArray*)items;
 
 @end

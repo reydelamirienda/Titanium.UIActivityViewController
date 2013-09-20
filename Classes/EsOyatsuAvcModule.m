@@ -13,6 +13,9 @@
 
 #pragma mark Internal
 
+MAKE_SYSTEM_PROP(ACTIVITY_CATEGORY_ACTION,  UIActivityCategoryAction);
+MAKE_SYSTEM_PROP(ACTIVITY_CATEGORY_SHARE,   UIActivityCategoryShare);
+
 MAKE_SYSTEM_STR(ACTIVITY_TYPE_FACEBOOK,     UIActivityTypePostToFacebook);
 MAKE_SYSTEM_STR(ACTIVITY_TYPE_TWITTER,      UIActivityTypePostToTwitter);
 MAKE_SYSTEM_STR(ACTIVITY_TYPE_WEIBO,        UIActivityTypePostToWeibo);
