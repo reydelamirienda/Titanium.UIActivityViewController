@@ -40,7 +40,7 @@ function share() {
 	});
 
 	Ti.API.log("Open!");
-	avc.performWithItems('Hiya!', Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, "images/pedo.jpg"), 'http://www.google.com', {start: new Date(), end: new Date()}, new Date());
+	avc.performWithItems('Hiya!', Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, "images/pedo.jpg"), 'http://www.google.com', {begin: new Date(2014,1,10,9,45), end: new Date(2014,1,10,10,15), title: "Dentist"});
 }
 
 label.addEventListener('click', function() {

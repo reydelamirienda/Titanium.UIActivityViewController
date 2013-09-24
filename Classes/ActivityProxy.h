@@ -10,5 +10,5 @@
 #import <UIKit/UIKit.h>
 
 @protocol ActivityProxy <NSObject>
--(UIActivity*) asActivity;
+- (UIActivity*) asActivity;
 @end

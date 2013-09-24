@@ -47,17 +47,17 @@
 
 - (NSString *) activityType
 {
-    return self.proxy.type;
+    return _proxy.type;
 }
 
 - (NSString *) activityTitle
 {
-    return self.proxy.title;
+    return _proxy.title;
 }
 
 - (UIImage *) activityImage
 {
-    return [self.proxy imageOrDefault];
+    return [_proxy imageOrDefault];
 }
 
 - (void) prepareWithActivityItems:(NSArray *) activityItems
@@ -72,14 +72,14 @@
 
 - (void) performActivity
 {
-    [self activityDidFinish:[self.proxy performActivity:self withItems:_activityItems]];
+    [self activityDidFinish:[_proxy performActivity:self withItems:_activityItems]];
 }
 
 - (instancetype) initWithProxy:(EsOyatsuAvcApplicationActivityProxy *)proxy;
 {
     self = [super init];
     if (self) {
-        self.proxy = proxy;
+        _proxy = proxy;
     }
     return self;
 }

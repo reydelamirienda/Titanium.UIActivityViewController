@@ -17,9 +17,14 @@
 
 @end
 
-@interface EKImportToCalendarActivity : UIActivity <EKEventEditViewDelegate>
+@interface EKImportToCalendarActivity : UIActivity <EKEventEditViewDelegate> {
+    EsOyatsuAvcImportToCalendarActivityProxy* _proxy;
+    EKEvent* _event;
+}
 
 @property(retain, nonatomic) EKEventStore* store;
+
+- (instancetype) initWithProxy:(EsOyatsuAvcImportToCalendarActivityProxy *)proxy toStore:(EKEventStore*)store;
 
 @end
 
