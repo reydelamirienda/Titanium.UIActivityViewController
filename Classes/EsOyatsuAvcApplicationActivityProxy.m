@@ -10,7 +10,6 @@
 #import "TiUtils.h"
 #import "EsOyatsuAvcModule.h"
 #import "EsOyatsuAvcApplicationActivityProxy.h"
-#import "ApplicationActivity.h"
 
 @implementation EsOyatsuAvcApplicationActivityProxy
 
@@ -42,3 +41,75 @@
     }
 }
 @end
+
+
+@implementation ApplicationActivity
+
+- (NSString *) activityType
+{
+    return _proxy.type;
+}
+
+- (NSString *) activityTitle
+{
+    return _proxy.title;
+}
+
+- (UIImage *) activityImage
+{
+    return [_proxy imageOrDefault];
+}
+
+- (void) prepareWithActivityItems:(NSArray *) activityItems
+{
+    _activityItems = activityItems;
+}
+
+- (BOOL) canPerformWithActivityItems:(NSArray *)activityItems
+{
+    return YES;
+}
+
+- (void) performActivity
+{
+    [self activityDidFinish:[_proxy performActivity:self withItems:_activityItems]];
+}
+
+- (instancetype) initWithProxy:(EsOyatsuAvcApplicationActivityProxy *)proxy;
+{
+    self = [super init];
+    if (self) {
+        _proxy = proxy;
+    }
+    return self;
+}
+
++ (ApplicationActivity*) activityWithProxy:(EsOyatsuAvcApplicationActivityProxy *)proxy ofCategory:(UIActivityCategory)category
+{
+    if (category == UIActivityCategoryAction) {
+        return [[ApplicationActionActivity alloc] initWithProxy:proxy];
+    } else {
+        return [[ApplicationShareActivity alloc] initWithProxy:proxy];
+    }
+}
+
+@end
+
+@implementation ApplicationShareActivity
+
++(UIActivityCategory)activityCategory
+{
+    return UIActivityCategoryShare;
+}
+
+@end
+
+@implementation ApplicationActionActivity
+
++(UIActivityCategory)activityCategory
+{
+    return UIActivityCategoryAction;
+}
+
+@end
+
