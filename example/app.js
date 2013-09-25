@@ -11,35 +11,44 @@ win.open();
 // TODO: write your module tests here
 var AVC = require('es.oyatsu.avc');
 
-var win2 = Ti.UI.createWindow({
-	modal: true,
-	backgroundColor:'#ff0000',
-	width: 30, height: 30
-});
+function share() {
 
-var activity = AVC.createApplicationActivity({
-	category: AVC.ACTIVITY_CATEGORY_SHARE,
-	type: 'es.oyatsu.custom1',
-	title: 'Custom',
-	onPerformActivity: function() {
-		Ti.API.info("Perform, baby!", arguments.length);
-		for (var i=0; i < arguments.length; i++) {
-			Ti.API.info(arguments[i], typeof arguments[i]);
+	var activity = AVC.createApplicationActivity({
+		category: AVC.ACTIVITY_CATEGORY_SHARE,
+		type: 'es.oyatsu.custom1',
+		title: 'Custom',
+		onPerformActivity: function() {
+			Ti.API.info("Perform, baby!", arguments.length);
+			for (var i=0; i < arguments.length; i++) {
+				Ti.API.info(arguments[i], typeof arguments[i]);
+			}
+			return true;
 		}
-		return true;
-	}
-});
+	});
 
-var avc = AVC.createActivityViewController({
-	excluded: [AVC.ACTIVITY_TYPE_MAIL],
-	applicationActivities: [activity]
-});
+	var calendar = AVC.createImportToCalendarActivity({
+		calendar: Ti.Calendar
+	});
 
-avc.addEventListener("completed", function(e) {
-	Ti.API.log("Completed " + e.activity + " " + e.success);
-});
+	var avc = AVC.createActivityViewController({
+		excluded: [AVC.ACTIVITY_TYPE_MAIL],
+		applicationActivities: [activity, calendar]
+	});
+
+	avc.addEventListener("completed", function(e) {
+		Ti.API.log("Completed " + e.activity + " " + e.success);
+	});
+
+	Ti.API.log("Open!");
+	avc.performWithItems('Hiya!', Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, "images/pedo.jpg"), 'http://www.google.com', {begin: new Date(2014,1,10,9,45), end: new Date(2014,1,10,10,15), title: "Dentist"});
+}
 
 label.addEventListener('click', function() {
-	Ti.API.log("Open!");
-	avc.performWithItems('Hiya!', Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, "images/pedo.jpg"), 'http://www.google.com', {start: new Date(), end: new Date()}, new Date());
+	if (Ti.Calendar.eventsAuthorization == Ti.Calendar.AUTHORIZATION_AUTHORIZED) {
+	    share();
+	} else {
+	    Ti.Calendar.requestEventsAuthorization(function(e){
+            share();
+        });
+	}
 });
