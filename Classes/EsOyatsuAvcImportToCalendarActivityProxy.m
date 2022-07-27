@@ -76,7 +76,7 @@
 
 - (UIImage *) activityImage
 {
-    return [TiUtils image:@"modules/es.oyatsu.avc/NHCalendarActivityIcon.png" proxy:_proxy];
+    return [TiUtils image:@"NHCalendarActivityIcon.png" proxy:_proxy];
 }
 
 - (BOOL) canPerformWithActivityItems:(NSArray *)activityItems

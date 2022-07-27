@@ -19,7 +19,7 @@
     if (_image) {
         return [TiUtils image:_image proxy:self];
     } else {
-        return [TiUtils image:@"modules/es.oyatsu.avc/activity.png" proxy:self];
+        return [TiUtils image:@"activity.png" proxy:self];
     }
 }
 
