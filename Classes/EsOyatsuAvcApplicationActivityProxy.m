@@ -26,7 +26,8 @@
 
 -(UIActivity*)asActivity
 {
-    return [ApplicationActivity activityWithProxy:self ofCategory:_category];
+    UIActivityCategory category = [TiUtils intValue:_category];
+    return [ApplicationActivity activityWithProxy:self ofCategory:category];
 }
 
 -(BOOL)performActivity:(ApplicationActivity*)activity withItems:(NSArray *)items
