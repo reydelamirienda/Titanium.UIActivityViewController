@@ -6,7 +6,11 @@
 //
 //
 
+#define USE_TI_CALENDAR
+
 #import "TiCalendarCalendar.h"
+#import "TiCalendarEvent.h"
+#import "TiUtils.h"
 
 #import "EsOyatsuAvcImportToCalendarActivityProxy.h"
 
@@ -72,7 +76,7 @@
 
 - (UIImage *) activityImage
 {
-    return [TiUtils image:@"modules/es.oyatsu.avc/NHCalendarActivityIcon.png" proxy:_proxy];
+    return [TiUtils image:@"NHCalendarActivityIcon.png" proxy:_proxy];
 }
 
 - (BOOL) canPerformWithActivityItems:(NSArray *)activityItems

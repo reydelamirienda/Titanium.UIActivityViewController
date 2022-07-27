@@ -19,14 +19,15 @@
     if (_image) {
         return [TiUtils image:_image proxy:self];
     } else {
-        return [TiUtils image:@"modules/es.oyatsu.avc/activity.png" proxy:self];
+        return [TiUtils image:@"activity.png" proxy:self];
     }
 }
 
 
 -(UIActivity*)asActivity
 {
-    return [ApplicationActivity activityWithProxy:self ofCategory:_category];
+    UIActivityCategory category = [TiUtils intValue:_category];
+    return [ApplicationActivity activityWithProxy:self ofCategory:category];
 }
 
 -(BOOL)performActivity:(ApplicationActivity*)activity withItems:(NSArray *)items

@@ -15,7 +15,6 @@
 
 @implementation EsOyatsuAvcActivityViewControllerProxy
 
-
 -(NSArray*)buildActivities
 {
     NSMutableArray* result = nil;
@@ -55,30 +54,28 @@
             [activityItems addObject:obj];
         }
     }
-    
-    NSArray *applicationActivities = [self buildActivities];
-    
-	UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:applicationActivities];
-    
+
+    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:activityItems
+                                                                             applicationActivities:[self buildActivities]];
+
     if (_excluded != nil) {
         [controller setExcludedActivityTypes:_excluded];
     }
-    
-    controller.completionHandler = ^(NSString *act, BOOL done) {
-        NSMutableDictionary *event = [[[NSMutableDictionary alloc] initWithObjectsAndKeys:NUMBOOL(done), @"success", nil] autorelease];
-		if (act != nil) {
-            [event setValue:act forKey:@"activity"];
+
+    controller.completionWithItemsHandler = ^(UIActivityType activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
+        NSMutableDictionary *event = [[NSMutableDictionary alloc] initWithDictionary:@{ @"success": @(completed) }];
+        if (activityType != nil) {
+            [event setValue:activityType forKey:@"activity"];
         }
         [self fireEvent:@"completed" withObject:event];
-        controller.completionHandler = nil;
+        controller.completionWithItemsHandler = nil;
         [controller autorelease];
         [self forgetSelf];
         [self autorelease];
-	};
-    
+    };
+
     [self retain];
-	[[TiApp app].controller presentViewController:controller animated:YES completion:nil];
-    
+    [[TiApp app].controller presentViewController:controller animated:YES completion:nil];
 }
 
 @end

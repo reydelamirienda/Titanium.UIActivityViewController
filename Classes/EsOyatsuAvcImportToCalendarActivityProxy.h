@@ -6,6 +6,8 @@
 //
 //
 
+#define USE_TI_CALENDAR
+
 #import "TiProxy.h"
 #import "ActivityProxy.h"
 #import <EventKitUI/EKEventEditViewController.h>
